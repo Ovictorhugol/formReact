@@ -1,13 +1,12 @@
 import React from "react";
-
+import { getData, sendData } from "../utils/hooks";
 function Button(props) {
-  const onClickHandler = (e) => {
-    console.log(e.target.value);
-  };
+  const { text, onClickHandler } = props;
+
   return (
     <div>
       <button type="submit" onClick={onClickHandler}>
-        {props.text}
+        {text}
       </button>
     </div>
   );

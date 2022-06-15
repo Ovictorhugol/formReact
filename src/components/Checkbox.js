@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 
 function Checkbox(props) {
-  const { type } = props;
+  const { type, value, onChange } = props;
+  const checkboxRef = useRef();
   return (
     <div>
-      <input type={type}></input>
+      <input
+        id="checkbox"
+        type={type}
+        value={value}
+        onChange={onChange}
+      ></input>
     </div>
   );
 }
