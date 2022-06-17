@@ -13,7 +13,7 @@ function Checkbox(props) {
           value={value}
           onChange={onChange}
         ></input>
-        <label>{label}</label>
+        <label for="checkbox">{label}</label>
       </TermsAndConditions>
     </div>
   );

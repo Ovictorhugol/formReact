@@ -13,10 +13,15 @@ import {
 import {
   HomeContainer,
   Img,
+  ImgP,
   FormBody,
   Order,
   CheckboxButton,
+  InputPhone,
+  InputEmail,
+  InputDate,
   InputPassword,
+  ButtonStyle,
 } from "../utils/styles";
 import { useNavigate } from "react-router-dom";
 function Home() {
@@ -74,10 +79,14 @@ function Home() {
           <FormBody>
             <Img>
               <img src={logo} alt="Logo" />
+              <ImgP>
+                <p>Intern Sing up</p>
+              </ImgP>
             </Img>
             <div>
               <div id="formName">
                 <Input
+                  id="name"
                   type="text"
                   label="Full Name"
                   placeholder="Name"
@@ -88,31 +97,37 @@ function Home() {
                 />
               </div>
               <div id="formPhoneEmail">
-                <Input
-                  type="email"
-                  label="Email"
-                  placeholder="foo@bar.com"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-
-                <Input
-                  type="phone"
-                  label="Phone"
-                  placeholder="(83)00000-0000"
-                  value={phone}
-                  lenght={11}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                  }}
-                />
+                <InputEmail>
+                  <Input
+                    id="email"
+                    type="email"
+                    label="Email"
+                    placeholder="foo@bar.com"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </InputEmail>
+                <InputPhone>
+                  <Input
+                    id="phone"
+                    type="phone"
+                    label="Phone"
+                    placeholder="(83)00000-0000"
+                    value={phone}
+                    lenght={11}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
+                </InputPhone>
               </div>
 
               <div id="formPasswordDate">
                 <InputPassword>
                   <Input
+                    id="password"
                     type="password"
                     label="Password"
                     placeholder=""
@@ -122,26 +137,31 @@ function Home() {
                     }}
                   />
                 </InputPassword>
-                <Input
-                  type="date"
-                  label="Birthday"
-                  placeholder=""
-                  value={birthday}
-                  onChange={(e) => {
-                    setBirthday(e.target.value);
-                  }}
-                />
+                <InputDate>
+                  <Input
+                    id="birthday"
+                    type="date"
+                    label="Birthday"
+                    placeholder=""
+                    value={birthday}
+                    onChange={(e) => {
+                      setBirthday(e.target.value);
+                    }}
+                  />
+                </InputDate>
               </div>
             </div>
             <CheckboxButton>
-              <Checkbox
-                type="checkbox"
-                value={check}
-                label="I accept the terms and privacy"
-                onChange={(e) => {
-                  setCheck(e.target.checked);
-                }}
-              />
+              <div className="checkbox">
+                <Checkbox
+                  type="checkbox"
+                  value={check}
+                  label="I accept the terms and privacy"
+                  onChange={(e) => {
+                    setCheck(e.target.checked);
+                  }}
+                />
+              </div>
               <Button text="Register" onClickHandler={onClickHandler} />
             </CheckboxButton>
           </FormBody>

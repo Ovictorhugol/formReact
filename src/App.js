@@ -5,11 +5,6 @@ import Routes from "./routes";
 function App() {
   return (
     <Router>
-      {/* <AppHome>
-        <div className="App">
-          <Home />
-        </div>
-      </AppHome> */}
       <Routes />
     </Router>
   );

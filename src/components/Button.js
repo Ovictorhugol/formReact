@@ -1,13 +1,15 @@
 import React from "react";
-
+import { ButtonStyle } from "../utils/styles";
 function Button(props) {
   const { text, onClickHandler } = props;
 
   return (
     <div>
-      <button type="submit" onClick={onClickHandler}>
-        {text}
-      </button>
+      <ButtonStyle>
+        <button type="submit" onClick={onClickHandler}>
+          {text}
+        </button>
+      </ButtonStyle>
     </div>
   );
 }
