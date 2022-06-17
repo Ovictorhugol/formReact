@@ -22,6 +22,7 @@ import {
   InputDate,
   InputPassword,
   ButtonStyle,
+  OrderPhone,
 } from "../utils/styles";
 import { useNavigate } from "react-router-dom";
 function Home() {
@@ -46,28 +47,38 @@ function Home() {
     if (!validName.test(name)) {
       console.log("Nome invalido");
       testPassed = false;
-    }
+      document.getElementById("pName").style.display = "flex";
+    } else document.getElementById("pName").style.display = "none";
 
     if (!validEmail.test(email)) {
       console.log("Email Invalido");
       testPassed = false;
-    }
+      document.getElementById("pEmail").style.display = "flex";
+    } else document.getElementById("pEmail").style.display = "none";
     if (!validPhone.test(phone)) {
       console.log("Telefone invalido");
       testPassed = false;
-    }
+      document.getElementById("pPhone").style.display = "flex";
+    } else document.getElementById("pPhone").style.display = "none";
     if (!validPassword.test(password)) {
       console.log("Password Invalido");
       testPassed = false;
-    }
+      document.getElementById("pPass").style.display = "flex";
+    } else document.getElementById("pPass").style.display = "none";
     if (!validBirthday.test(birthday)) {
-      console.log("Data invalida");
-      testPassed = false;
-    }
+      const year = birthday.substring(0, 4);
+      if (year > 1901 && !year) {
+        console.log("Data invalida");
+        testPassed = false;
+        document.getElementById("pDate").style.display = "flex";
+      }
+    } else document.getElementById("pDate").style.display = "none";
+
     if (!check) {
       console.log("O checkbox deve estar marcado");
       testPassed = false;
-    }
+      document.getElementById("pCheck").style.display = "flex";
+    } else document.getElementById("pCheck").style.display = "none";
 
     return testPassed;
   };
@@ -95,60 +106,75 @@ function Home() {
                     setName(e.target.value);
                   }}
                 />
+                <p id="pName">Fullname invalid</p>
               </div>
               <div id="formPhoneEmail">
-                <InputEmail>
-                  <Input
-                    id="email"
-                    type="email"
-                    label="Email"
-                    placeholder="foo@bar.com"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                  />
-                </InputEmail>
-                <InputPhone>
-                  <Input
-                    id="phone"
-                    type="phone"
-                    label="Phone"
-                    placeholder="(83)00000-0000"
-                    value={phone}
-                    lenght={11}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                    }}
-                  />
-                </InputPhone>
+                <div>
+                  <InputEmail>
+                    <Input
+                      id="email"
+                      type="email"
+                      label="Email"
+                      placeholder="foo@bar.com"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    />
+                  </InputEmail>
+                  <p id="pEmail">Email invalid</p>
+                </div>
+                <OrderPhone>
+                  <InputPhone>
+                    <Input
+                      id="phone"
+                      type="phone"
+                      label="Phone"
+                      placeholder="(83)00000-0000"
+                      value={phone}
+                      lenght={11}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                      }}
+                    />
+                  </InputPhone>
+                  <p id="pPhone">Phone invalid</p>
+                </OrderPhone>
               </div>
 
               <div id="formPasswordDate">
-                <InputPassword>
-                  <Input
-                    id="password"
-                    type="password"
-                    label="Password"
-                    placeholder=""
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                  />
-                </InputPassword>
-                <InputDate>
-                  <Input
-                    id="birthday"
-                    type="date"
-                    label="Birthday"
-                    placeholder=""
-                    value={birthday}
-                    onChange={(e) => {
-                      setBirthday(e.target.value);
-                    }}
-                  />
-                </InputDate>
+                <div>
+                  <InputPassword>
+                    <Input
+                      id="password"
+                      type="password"
+                      label="Password"
+                      placeholder=""
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    />
+                  </InputPassword>
+                  <p id="pPass">Password invalid</p>
+                </div>
+                <div>
+                  <InputDate>
+                    <Order>
+                      <Input
+                        id="birthday"
+                        type="date"
+                        label="Birthday"
+                        placeholder=""
+                        value={birthday}
+                        onChange={(e) => {
+                          setBirthday(e.target.value);
+                        }}
+                      />
+                    </Order>
+                  </InputDate>
+                  <p id="pDate">Age invalid</p>
+                </div>
               </div>
             </div>
             <CheckboxButton>
@@ -161,8 +187,15 @@ function Home() {
                     setCheck(e.target.checked);
                   }}
                 />
+                <p id="pCheck">You must accept the terms</p>
               </div>
-              <Button text="Register" onClickHandler={onClickHandler} />
+              <ButtonStyle>
+                <Button
+                  className="result"
+                  text="Register"
+                  onClickHandler={onClickHandler}
+                />
+              </ButtonStyle>
             </CheckboxButton>
           </FormBody>
         </section>

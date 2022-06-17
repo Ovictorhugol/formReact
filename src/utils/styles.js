@@ -1,10 +1,4 @@
 import styled from "styled-components";
-export const AppHome = styled.div`
-  margin: 0;
-
-  min-width: 100%;
-  min-height: 100%;
-`;
 
 export const HomeContainer = styled.section`
   display: flex;
@@ -16,7 +10,7 @@ export const HomeContainer = styled.section`
 `;
 
 export const Img = styled.div`
-  margin-top: 2em;
+  margin-top: 1em;
 `;
 
 export const ImgP = styled.p`
@@ -51,6 +45,17 @@ export const FormBody = styled.div`
     margin-bottom: 1em;
     font-size: 0.8em;
   }
+  @media (max-width: 768px) {
+    #formName {
+      margin-bottom: 0em;
+    }
+    #formPhoneEmail {
+      margin-bottom: 0em;
+    }
+    #formPasswordDate {
+      margin-bottom: 0em;
+    }
+  }
 `;
 export const InputEmail = styled.div`
   width: 19em;
@@ -69,6 +74,11 @@ export const InputDate = styled.div`
 
 export const Order = styled.div`
   @media (max-width: 768px) {
+    order: 5;
+  }
+`;
+export const OrderPhone = styled.div`
+  @media (max-width: 768px) {
     order: 2;
   }
 `;
@@ -81,9 +91,19 @@ export const CheckboxButton = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 2em;
+  margin-top: 1em;
   .checkbox {
     margin-right: 5em;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 0em;
+    .checkbox {
+      align-content: flex-start;
+      margin-right: 10em;
+      margin-bottom: 1em;
+    }
   }
 `;
 
@@ -91,6 +111,17 @@ export const ButtonStyle = styled.button`
   background: #0dbdbd;
   border: 0;
   border-radius: 0.625em;
+  color: white;
+  width: 6em;
+  height: 2em;
+  &.success {
+    width: 15em;
+    height: 7em;
+  }
+  @media (max-width: 768px) {
+    width: 23em;
+    height: 3em;
+  }
 `;
 
 export const TermsAndConditions = styled.div`

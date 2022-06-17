@@ -8,3 +8,51 @@ body {
     background: white;
   }
 }
+.containerSucess {
+  display: flex;
+  justify-content: center;
+}
+#button {
+  all: unset;
+  cursor: pointer;
+}
+
+#pName {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+}
+#pEmail {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+}
+#pPhone {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+  margin-left: 2em;
+}
+#pPass {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+}
+#pDate {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+  margin-left: 2em;
+}
+#pCheck {
+  margin: 0;
+  font-size: 0.6em;
+  color: red;
+  display: none;
+  margin-left: 0.5em;
+}
