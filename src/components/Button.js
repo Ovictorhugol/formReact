@@ -1,5 +1,5 @@
 import React from "react";
-import { getData, sendData } from "../utils/hooks";
+
 function Button(props) {
   const { text, onClickHandler } = props;
 

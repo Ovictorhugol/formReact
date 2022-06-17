@@ -1,16 +1,20 @@
-import React, { useRef } from "react";
+import React from "react";
+import { TermsAndConditions } from "../utils/styles";
 
 function Checkbox(props) {
-  const { type, value, onChange } = props;
-  const checkboxRef = useRef();
+  const { type, value, onChange, label } = props;
+
   return (
     <div>
-      <input
-        id="checkbox"
-        type={type}
-        value={value}
-        onChange={onChange}
-      ></input>
+      <TermsAndConditions>
+        <input
+          id="checkbox"
+          type={type}
+          value={value}
+          onChange={onChange}
+        ></input>
+        <label>{label}</label>
+      </TermsAndConditions>
     </div>
   );
 }

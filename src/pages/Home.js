@@ -3,6 +3,22 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Checkbox from "../components/Checkbox";
 import logo from "../assets/Logo.svg";
+import {
+  validName,
+  validPhone,
+  validEmail,
+  validPassword,
+  validBirthday,
+} from "../utils/regex";
+import {
+  HomeContainer,
+  Img,
+  FormBody,
+  Order,
+  CheckboxButton,
+  InputPassword,
+} from "../utils/styles";
+import { useNavigate } from "react-router-dom";
 function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,69 +26,128 @@ function Home() {
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [check, setCheck] = useState(false);
+  const navigate = useNavigate();
   const onClickHandler = (event) => {
     event.preventDefault();
-    console.log(name, email, phone, password, birthday, check);
+
+    if (!validation()) {
+      console.log(name, email, phone, password, birthday, check);
+    } else {
+      navigate("/success");
+    }
   };
+  const validation = () => {
+    let testPassed = true;
+    if (!validName.test(name)) {
+      console.log("Nome invalido");
+      testPassed = false;
+    }
+
+    if (!validEmail.test(email)) {
+      console.log("Email Invalido");
+      testPassed = false;
+    }
+    if (!validPhone.test(phone)) {
+      console.log("Telefone invalido");
+      testPassed = false;
+    }
+    if (!validPassword.test(password)) {
+      console.log("Password Invalido");
+      testPassed = false;
+    }
+    if (!validBirthday.test(birthday)) {
+      console.log("Data invalida");
+      testPassed = false;
+    }
+    if (!check) {
+      console.log("O checkbox deve estar marcado");
+      testPassed = false;
+    }
+
+    return testPassed;
+  };
+
   return (
-    <div>
-      <img src={logo} alt="Logo" />
-      <form>
-        <Input
-          type="text"
-          label="Full Name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <Input
-          type="email"
-          label="Email"
-          placeholder="foo@bar.com"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-        />
-        <Input
-          type="phone"
-          label="Phone"
-          placeholder="(83)00000-0000"
-          value={phone}
-          onChange={(e) => {
-            setPhone(e.target.value);
-          }}
-        />
-        <Input
-          type="password"
-          label="Password"
-          placeholder=""
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <Input
-          type="date"
-          label="Birthday"
-          placeholder=""
-          value={birthday}
-          onChange={(e) => {
-            setBirthday(e.target.value);
-          }}
-        />
-        <Checkbox
-          type="checkbox"
-          value={check}
-          onChange={(e) => {
-            setCheck(e.target.checked);
-          }}
-        />
-        <Button text="Register" onClickHandler={onClickHandler} />
-      </form>
-    </div>
+    <HomeContainer>
+      <div className="formBody">
+        <section>
+          <FormBody>
+            <Img>
+              <img src={logo} alt="Logo" />
+            </Img>
+            <div>
+              <div id="formName">
+                <Input
+                  type="text"
+                  label="Full Name"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </div>
+              <div id="formPhoneEmail">
+                <Input
+                  type="email"
+                  label="Email"
+                  placeholder="foo@bar.com"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+
+                <Input
+                  type="phone"
+                  label="Phone"
+                  placeholder="(83)00000-0000"
+                  value={phone}
+                  lenght={11}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div id="formPasswordDate">
+                <InputPassword>
+                  <Input
+                    type="password"
+                    label="Password"
+                    placeholder=""
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                </InputPassword>
+                <Input
+                  type="date"
+                  label="Birthday"
+                  placeholder=""
+                  value={birthday}
+                  onChange={(e) => {
+                    setBirthday(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <CheckboxButton>
+              <Checkbox
+                type="checkbox"
+                value={check}
+                label="I accept the terms and privacy"
+                onChange={(e) => {
+                  setCheck(e.target.checked);
+                }}
+              />
+              <Button text="Register" onClickHandler={onClickHandler} />
+            </CheckboxButton>
+          </FormBody>
+        </section>
+      </div>
+    </HomeContainer>
   );
 }
 
