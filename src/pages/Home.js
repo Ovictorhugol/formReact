@@ -65,13 +65,14 @@ function Home() {
       testPassed = false;
       document.getElementById("pPass").style.display = "flex";
     } else document.getElementById("pPass").style.display = "none";
-    if (!validBirthday.test(birthday)) {
-      const year = birthday.substring(0, 4);
-      if (year > 1901 && !year) {
-        console.log("Data invalida");
-        testPassed = false;
-        document.getElementById("pDate").style.display = "flex";
-      }
+
+    let year = Number(birthday.substring(0, 4));
+
+    console.log(year);
+    if (!validBirthday.test(birthday) || year < 1901) {
+      console.log("Data invalida");
+      testPassed = false;
+      document.getElementById("pDate").style.display = "flex";
     } else document.getElementById("pDate").style.display = "none";
 
     if (!check) {
