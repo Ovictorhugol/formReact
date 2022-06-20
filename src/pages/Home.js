@@ -15,14 +15,12 @@ import {
   Img,
   ImgP,
   FormBody,
-  Order,
   CheckboxButton,
   InputPhone,
   InputEmail,
   InputDate,
   InputPassword,
   ButtonStyle,
-  OrderPhone,
 } from "../utils/styles";
 import { useNavigate } from "react-router-dom";
 function Home() {
@@ -37,7 +35,7 @@ function Home() {
     event.preventDefault();
 
     if (!validation()) {
-      console.log(name, email, phone, password, birthday, check);
+      console.log("Some information is wrong");
     } else {
       navigate("/success");
     }
@@ -45,38 +43,31 @@ function Home() {
   const validation = () => {
     let testPassed = true;
     if (!validName.test(name)) {
-      console.log("Nome invalido");
       testPassed = false;
       document.getElementById("pName").style.display = "flex";
     } else document.getElementById("pName").style.display = "none";
 
     if (!validEmail.test(email)) {
-      console.log("Email Invalido");
       testPassed = false;
       document.getElementById("pEmail").style.display = "flex";
     } else document.getElementById("pEmail").style.display = "none";
     if (!validPhone.test(phone)) {
-      console.log("Telefone invalido");
       testPassed = false;
       document.getElementById("pPhone").style.display = "flex";
     } else document.getElementById("pPhone").style.display = "none";
     if (!validPassword.test(password)) {
-      console.log("Password Invalido");
       testPassed = false;
       document.getElementById("pPass").style.display = "flex";
     } else document.getElementById("pPass").style.display = "none";
 
     let year = Number(birthday.substring(0, 4));
 
-    console.log(year);
     if (!validBirthday.test(birthday) || year < 1901) {
-      console.log("Data invalida");
       testPassed = false;
       document.getElementById("pDate").style.display = "flex";
     } else document.getElementById("pDate").style.display = "none";
 
     if (!check) {
-      console.log("O checkbox deve estar marcado");
       testPassed = false;
       document.getElementById("pCheck").style.display = "flex";
     } else document.getElementById("pCheck").style.display = "none";
@@ -95,7 +86,7 @@ function Home() {
                 <p>Intern Sing up</p>
               </ImgP>
             </Img>
-            <div>
+            <div className="form">
               <div id="formName">
                 <Input
                   id="name"
@@ -125,7 +116,7 @@ function Home() {
                   </InputEmail>
                   <p id="pEmail">Email invalid</p>
                 </div>
-                <OrderPhone>
+                <div id="FormPhone">
                   <InputPhone>
                     <Input
                       id="phone"
@@ -140,7 +131,7 @@ function Home() {
                     />
                   </InputPhone>
                   <p id="pPhone">Phone invalid</p>
-                </OrderPhone>
+                </div>
               </div>
 
               <div id="formPasswordDate">
@@ -159,20 +150,18 @@ function Home() {
                   </InputPassword>
                   <p id="pPass">Password invalid</p>
                 </div>
-                <div>
+                <div id="FormDate">
                   <InputDate>
-                    <Order>
-                      <Input
-                        id="birthday"
-                        type="date"
-                        label="Birthday"
-                        placeholder=""
-                        value={birthday}
-                        onChange={(e) => {
-                          setBirthday(e.target.value);
-                        }}
-                      />
-                    </Order>
+                    <Input
+                      id="birthday"
+                      type="date"
+                      label="Birthday"
+                      placeholder=""
+                      value={birthday}
+                      onChange={(e) => {
+                        setBirthday(e.target.value);
+                      }}
+                    />
                   </InputDate>
                   <p id="pDate">Age invalid</p>
                 </div>

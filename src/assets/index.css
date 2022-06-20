@@ -7,10 +7,20 @@ body {
   body {
     background: white;
   }
+  #FormDate {
+    order: 2;
+  }
+  #FormPhone {
+    order: 1;
+  }
 }
 .containerSucess {
   display: flex;
   justify-content: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
 }
 #button {
   all: unset;

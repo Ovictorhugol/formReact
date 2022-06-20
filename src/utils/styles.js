@@ -63,6 +63,7 @@ export const InputEmail = styled.div`
 export const InputPhone = styled.div`
   width: 8em;
   margin-left: 1em;
+  order: 2;
 `;
 export const InputPassword = styled.div`
   width: 19em;
@@ -72,16 +73,6 @@ export const InputDate = styled.div`
   margin-left: 1em;
 `;
 
-export const Order = styled.div`
-  @media (max-width: 768px) {
-    order: 5;
-  }
-`;
-export const OrderPhone = styled.div`
-  @media (max-width: 768px) {
-    order: 2;
-  }
-`;
 export const InputLabel = styled.div`
   display: flex;
   flex-direction: column;
